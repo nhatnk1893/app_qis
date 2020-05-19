@@ -11,11 +11,7 @@ class SliverDetail extends StatelessWidget {
             Container(
               child: Text('LIVE TRADING'),
             ),
-            Container(
-                child: SwitchListTile(
-              onChanged: (bool value) {},
-              value: null,
-            ))
+            Container(child: Text('data'))
           ]),
     );
   }

@@ -13,10 +13,10 @@ class ItemLevel extends StatelessWidget {
     return InkWell(
       onTap: () => {},
       child: Container(
-          height: 64,
+          height: 250,
           decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("$urlImg"),
+                image: AssetImage("assets/img/level1.jpg"),
                 fit: BoxFit.cover,
               ),
               border: Border.all(color: Colors.blue[200], width: 1.0)),
@@ -36,7 +36,7 @@ class ItemLevel extends StatelessWidget {
                         child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '$name',
+                        '$name $urlImg',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,

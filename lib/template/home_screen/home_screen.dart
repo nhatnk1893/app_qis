@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Row(),
+        title: Text('QIS Brycen'),
         actions: [
           IconButton(icon: Icon(Icons.search), onPressed: null),
           IconButton(icon: Icon(Icons.more_vert), onPressed: null)
@@ -19,14 +19,14 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           SliverAppBar(
             backgroundColor: Colors.white,
-            expandedHeight: 80,
+            expandedHeight: 400,
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               background: ChartWidget(),
             ),
           ),
-          SliverList(delegate: SliverChildListDelegate([SliverDetail()])),
+          SliverList(delegate: SliverChildListDelegate([ListLevel()])),
           SliverFillRemaining(child: ListLevel())
         ],
       ),
