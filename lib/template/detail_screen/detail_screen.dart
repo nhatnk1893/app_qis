@@ -1,3 +1,5 @@
+import 'package:app_qis/template/detail_screen/widget/vocabulary_quiz_tab_widget.dart';
+import 'package:app_qis/template/detail_screen/widget/vocabulary_tab_widget.dart';
 import 'package:flutter/material.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -36,9 +38,7 @@ class DetailScreen extends StatelessWidget {
               ),
             ];
           },
-          body: Center(
-            child: Text("Sample text"),
-          ),
+          body: TabBarView(children: [VocabularyTab(), VocabularyQuizTab()]),
         ),
       ),
     );
