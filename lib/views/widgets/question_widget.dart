@@ -1,4 +1,4 @@
-import 'package:app_qis/model/entity/vocabulary_jv.dart';
+import 'package:app_qis/model/vocabs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -12,7 +12,7 @@ class QuestionFrame extends StatefulWidget {
       this.flutterTts})
       : super(key: key);
 
-  final Vocabulary vocab;
+  final Vocab vocab;
   final TextEditingController userInputController;
   final String questionNumber;
   final void Function() showAnswer;

@@ -1,11 +1,11 @@
-import 'package:app_qis/model/entity/vocabulary_jv.dart';
+import 'package:app_qis/model/vocabs.dart';
 import 'package:flutter/material.dart';
 
 class AnswerFrame extends StatelessWidget {
   const AnswerFrame({Key key, this.vocab, this.userInputController})
       : super(key: key);
 
-  final Vocabulary vocab;
+  final Vocab vocab;
   final TextEditingController userInputController;
 
   @override

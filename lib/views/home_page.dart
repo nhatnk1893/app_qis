@@ -1,35 +1,36 @@
-import 'dart:math';
-
-import 'package:app_qis/model/entity/vocabulary_jv.dart';
-import 'package:app_qis/template/detail_screen/widget/quiz_answer.dart';
-import 'package:app_qis/template/detail_screen/widget/quiz_question.dart';
+import 'package:app_qis/model/vocabs.dart';
+import 'package:app_qis/views/widgets/answer_widget.dart';
+import 'package:app_qis/views/widgets/question_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class QuizPage extends StatefulWidget {
-  final List<Vocabulary> vocabs;
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title, this.vocabs, this.flutterTts})
+      : super(key: key);
+
+  final String title;
+  final Vocabs vocabs;
   final FlutterTts flutterTts;
 
-  const QuizPage({Key key, this.vocabs, this.flutterTts}) : super(key: key);
   @override
-  _QuizPageState createState() => _QuizPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _QuizPageState extends State<QuizPage> {
+class _HomePageState extends State<HomePage> {
   int counter;
   bool isShowAnswer;
   QuestionFrame qFrame;
   AnswerFrame aFrame;
-  Vocabulary vocab;
+
+  Vocabs vocabs;
+  Vocab vocab;
   TextEditingController userInputController;
-  int position = 0;
-  var rand = new Random();
 
   @override
   initState() {
     super.initState();
     counter = 1;
-    vocab = drawWord();
+    vocab = widget.vocabs.drawWord();
     isShowAnswer = false;
     userInputController = new TextEditingController();
     createNewFrames();
@@ -41,28 +42,20 @@ class _QuizPageState extends State<QuizPage> {
     super.dispose();
   }
 
-  Vocabulary drawWord() {
-    do {
-      this.position = rand.nextInt(widget.vocabs.length);
-    } while (widget.vocabs[this.position].word.length < 4 ||
-        widget.vocabs[this.position].meaning.length == 0);
-    return widget.vocabs[this.position];
-  }
-
-  void showAnswer() {
-    setState(() {
-      isShowAnswer = !isShowAnswer;
-    });
-  }
-
   void displayNextWord() {
-    Vocabulary newVocab = drawWord();
+    Vocab newVocab = widget.vocabs.drawWord();
     setState(() {
       counter++;
       vocab = newVocab;
       isShowAnswer = false;
       userInputController.clear();
       createNewFrames();
+    });
+  }
+
+  void showAnswer() {
+    setState(() {
+      isShowAnswer = !isShowAnswer;
     });
   }
 
@@ -83,6 +76,10 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
