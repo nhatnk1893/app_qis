@@ -9,11 +9,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('QIS Brycen'),
-        actions: [
-          IconButton(icon: Icon(Icons.search), onPressed: null),
-          IconButton(icon: Icon(Icons.more_vert), onPressed: null)
-        ],
+        title: Text(
+          'QIS Brycen',
+          style: TextStyle(color: Colors.blue),
+        ),
+        centerTitle: true,
       ),
       body: CustomScrollView(
         slivers: <Widget>[
@@ -28,10 +28,13 @@ class HomeScreen extends StatelessWidget {
           ),
           SliverList(
               delegate: SliverChildBuilderDelegate(
-            (context, index) => ItemLevel(
-              name: lstLevel[index].name,
-              urlImg: lstLevel[index].name,
-              level: lstLevel[index].level,
+            (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ItemLevel(
+                name: lstLevel[index].name,
+                urlImg: lstLevel[index].name,
+                level: lstLevel[index].level,
+              ),
             ),
             childCount: lstLevel.length,
           ))

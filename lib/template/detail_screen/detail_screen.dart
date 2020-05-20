@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DetailScreen extends StatelessWidget {
-  final String urlImg;
   final String name;
+  final int level;
 
-  const DetailScreen({Key key, this.urlImg, this.name}) : super(key: key);
+  const DetailScreen({Key key, this.name, this.level}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeScreenProvider>(builder:
         (BuildContext context, HomeScreenProvider provider, Widget child) {
-      var _lstVocabulary = provider.lstVocabulary;
+      final _lstVocabulary = provider.vocabs;
       return Scaffold(
         body: DefaultTabController(
           length: 2,
@@ -33,7 +34,7 @@ class DetailScreen extends StatelessWidget {
                             fontSize: 16.0,
                           )),
                       background: Image.asset(
-                        urlImg,
+                        'assets/img/level5.jpg',
                         fit: BoxFit.cover,
                       )),
                   bottom: TabBar(

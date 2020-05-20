@@ -25,12 +25,8 @@ class ItemLevel extends StatelessWidget {
         );
       },
       child: Container(
-          height: 250,
+          height: 60,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("$urlImg"),
-                fit: BoxFit.cover,
-              ),
               border: Border.all(color: Colors.blue[200], width: 1.0)),
           child: new Material(
             child: Padding(

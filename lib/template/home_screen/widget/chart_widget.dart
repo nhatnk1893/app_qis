@@ -13,18 +13,18 @@ class ChartWidget extends StatelessWidget {
             //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset(
-                'assets/img/level1.jpg',
-                scale: 2,
+                'assets/img/level5.jpg',
+                fit: BoxFit.cover,
               ),
               SizedBox(
                 height: 10.0,
               ),
-              Text('BITCOIN',
+              Text('QIS',
                   style: TextStyle(fontSize: 20.0, color: Colors.white)),
               SizedBox(
                 height: 10.0,
               ),
-              Text('\$ 99999.99',
+              Text('\$ QIS tháng 5 ',
                   style: TextStyle(
                       fontSize: 30.0,
                       color: Colors.white,
