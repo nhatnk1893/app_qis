@@ -73,12 +73,36 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  Future _showAlert(BuildContext context, String message) async {
+    return showDialog(
+        context: context,
+        child: new AlertDialog(
+          title: new Image.asset('assets/img/tuananh.jpg'),
+          actions: <Widget>[
+            new Text('Hello baby'),
+            new FlatButton(
+                onPressed: () => Navigator.pop(context), child: new Text('Ok'))
+          ],
+        ));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(widget.title),
+        actions: <Widget>[
+          IconButton(
+              padding: EdgeInsets.all(5.0),
+              icon: Image.asset(
+                'assets/img/tuananh.jpg',
+                fit: BoxFit.cover,
+              ),
+              onPressed: () =>
+                  _showAlert(context, 'Do you like flutter, I do!')),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -96,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     child: Ink(
                       decoration: ShapeDecoration(
-                        color: Colors.white,
+                        color: Colors.blue,
                         shape: CircleBorder(),
                       ),
                       child: IconButton(
@@ -111,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     child: Ink(
                       decoration: ShapeDecoration(
-                        color: Colors.white,
+                        color: Colors.blue,
                         shape: CircleBorder(),
                       ),
                       child: IconButton(

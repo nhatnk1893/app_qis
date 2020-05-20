@@ -57,9 +57,7 @@ class _MyApp extends State<MyApp> {
                 ),
               )
             : HomePage(
-                title: 'Kana Listening Test',
-                vocabs: vocabs,
-                flutterTts: flutterTts),
+                title: 'QIS THÁNG 5', vocabs: vocabs, flutterTts: flutterTts),
         debugShowCheckedModeBanner: false);
   }
 }
