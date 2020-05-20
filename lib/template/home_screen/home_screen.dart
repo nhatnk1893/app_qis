@@ -1,6 +1,6 @@
+import 'package:app_qis/model/entity/level_vocabulary_jv.dart';
 import 'package:app_qis/template/home_screen/widget/chart_widget.dart';
-import 'package:app_qis/template/home_screen/widget/list_level_widget.dart';
-import 'package:app_qis/template/home_screen/widget/sliver_detail_widget.dart';
+import 'package:app_qis/template/home_screen/widget/item_level.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -16,18 +16,25 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: CustomScrollView(
-        slivers: [
+        slivers: <Widget>[
           SliverAppBar(
             backgroundColor: Colors.white,
             expandedHeight: 400,
-            floating: false,
-            pinned: true,
+            floating: true,
+            pinned: false,
             flexibleSpace: FlexibleSpaceBar(
               background: ChartWidget(),
             ),
           ),
-          SliverList(delegate: SliverChildListDelegate([ListLevel()])),
-          SliverFillRemaining(child: ListLevel())
+          SliverList(
+              delegate: SliverChildBuilderDelegate(
+            (context, index) => ItemLevel(
+              name: lstLevel[index].name,
+              urlImg: lstLevel[index].name,
+              level: lstLevel[index].level,
+            ),
+            childCount: lstLevel.length,
+          ))
         ],
       ),
     );

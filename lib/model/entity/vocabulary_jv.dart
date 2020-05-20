@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:json_annotation/json_annotation.dart';
 part 'vocabulary_jv.g.dart';
 
@@ -16,6 +18,14 @@ class Vocabulary {
     this.romaji = romaji;
     this.level = level;
   }
+  String getPronounciationText() {
+    return hasHiragana() ? this.hiragana : this.word;
+  }
+
+  bool hasHiragana() {
+    return this.hiragana.length > 0;
+  }
+
   factory Vocabulary.fromJson(Map<String, dynamic> json) =>
       _$VocabularyFromJson(json);
   Map<String, dynamic> toJson() => _$VocabularyToJson(this);

@@ -1,36 +1,24 @@
-import 'package:app_qis/template/detail_screen/detail_screen.dart';
-import 'package:app_qis/template/home_screen/home_screen_provider.dart';
+import 'package:app_qis/model/entity/vocabulary_jv.dart';
 import 'package:flutter/material.dart';
-import 'package:page_transition/page_transition.dart';
-import 'package:provider/provider.dart';
 
-class ItemLevel extends StatelessWidget {
-  final String name;
-  final String urlImg;
-  final int level;
+class VocabularyItem extends StatelessWidget {
+  final Vocabulary vocabularyItem;
 
-  const ItemLevel({Key key, this.name, this.urlImg, this.level})
-      : super(key: key);
+  const VocabularyItem({Key key, this.vocabularyItem}) : super(key: key);
+
+  String drawedVocabulary() {
+    return vocabularyItem.hiragana != null
+        ? vocabularyItem.hiragana
+        : vocabularyItem.word;
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Provider.of<HomeScreenProvider>(context, listen: false)
-            .fetchData(level);
-        Navigator.push(
-          context,
-          PageTransition(
-              type: PageTransitionType.rightToLeft, child: DetailScreen()),
-        );
-      },
+      onTap: () {},
       child: Container(
           height: 250,
           decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("$urlImg"),
-                fit: BoxFit.cover,
-              ),
               border: Border.all(color: Colors.blue[200], width: 1.0)),
           child: new Material(
             child: Padding(
@@ -48,7 +36,7 @@ class ItemLevel extends StatelessWidget {
                         child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '$name',
+                        '$drawedVocabulary',
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
